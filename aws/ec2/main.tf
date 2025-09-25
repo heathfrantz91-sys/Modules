@@ -2,9 +2,9 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# Optional: select latest Ubuntu AMI if none provided
+# Automatically select latest Ubuntu AMI if none provided
 data "aws_ami" "default_ubuntu" {
-  count       = var.ami == "" ? 1 : 0
+  count       = var.ami_id == "" ? 1 : 0
   most_recent = true
 
   filter {
@@ -24,18 +24,18 @@ module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 5.6.0"
 
-  name          = var.name
+  name          = var.instance_name
   instance_type = var.instance_type
-  ami           = var.ami != "" ? var.ami : data.aws_ami.default_ubuntu[0].id
+  ami           = var.ami_id != "" ? var.ami_id : data.aws_ami.default_ubuntu[0].id
   key_name      = var.key_name
 
-  subnet_id              = var.subnet_id
-  vpc_security_group_ids = var.security_group_ids
+  subnet_id     = var.subnet_id
+  security_groups = var.security_group_ids  # <-- fixed argument name
 
   tags = merge(
-    { "Name" = var.name },
+    {
+      "Name" = var.instance_name
+    },
     var.instance_tags
   )
-
-  count = var.create ? 1 : 0
 }

@@ -1,17 +1,28 @@
-variable "create_bucket" {
-  description = "Controls if S3 bucket should be created"
+variable "bucket" {
+  description = "Name of the S3 bucket"
+  type        = string
+}
+
+variable "versioning" {
+  description = "S3 bucket versioning settings"
+  type        = map(bool)
+  default     = { enabled = false }
+}
+
+variable "acl" {
+  description = "ACL policy"
+  type        = string
+  default     = "private"
+}
+
+variable "control_object_ownership" {
+  description = "Object ownership setting"
   type        = bool
   default     = true
 }
 
-variable "acl" {
-  description = "(Optional) The canned ACL to apply. Conflicts with `grant`"
+variable "object_ownership" {
+  description = "Object ownership type"
   type        = string
-  default     = null
-}
-
-variable "tags" {
-  description = "(Optional) A mapping of tags to assign to the bucket."
-  type        = map(string)
-  default     = {}
+  default     = "ObjectWriter"
 }
