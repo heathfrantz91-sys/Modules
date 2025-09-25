@@ -24,15 +24,18 @@ module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 5.6.0"
 
-  count = var.create ? 1 : 0
-
+  count         = var.create ? 1 : 0
   name          = var.name
   instance_type = var.instance_type
   ami           = var.ami != "" ? var.ami : data.aws_ami.default_ubuntu[0].id
   key_name      = var.key_name
 
   subnet_id              = var.subnet_id
-  vpc_security_group_ids = var.security_group_ids   # ✅ correct argument name
+  vpc_security_group_ids = var.security_group_ids
+
+  # ✅ Do NOT include these unless needed
+  # cpu_core_count         = var.cpu_core_count
+  # cpu_threads_per_core   = var.cpu_threads_per_core
 
   tags = merge(
     {
