@@ -1,7 +1,3 @@
-#############################
-# EC2 Module Variables
-#############################
-
 variable "create" {
   description = "Whether to create an EC2 instance"
   type        = bool
@@ -14,7 +10,7 @@ variable "instance_name" {
 }
 
 variable "instance_type" {
-  description = "EC2 instance type (e.g., t3.micro)"
+  description = "EC2 instance type"
   type        = string
   default     = "t3.micro"
 }
@@ -35,18 +31,18 @@ variable "key_name" {
 }
 
 variable "subnet_id" {
-  description = "Subnet ID where the EC2 instance will be launched"
+  description = "Subnet ID where EC2 will be launched"
   type        = string
 }
 
 variable "security_group_ids" {
-  description = "List of security group IDs to attach to the EC2 instance"
+  description = "List of security group IDs to attach"
   type        = list(string)
   default     = []
 }
 
 variable "instance_tags" {
-  description = "Additional tags to assign to the EC2 instance"
+  description = "Additional tags to assign to the instance"
   type        = map(string)
   default     = {}
 }
