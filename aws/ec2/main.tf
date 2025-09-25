@@ -4,7 +4,7 @@ provider "aws" {
 
 # Automatically select latest Ubuntu AMI if none provided
 data "aws_ami" "default_ubuntu" {
-  count       = var.ami_id == "" ? 1 : 0
+  count       = var.ami == "" ? 1 : 0
   most_recent = true
 
   filter {
@@ -28,7 +28,7 @@ module "ec2_instance" {
 
   name          = var.name
   instance_type = var.instance_type
-  ami           = var.ami_id != "" ? var.ami_id : data.aws_ami.default_ubuntu[0].id
+  ami           = var.ami != "" ? var.ami : data.aws_ami.default_ubuntu[0].id
   key_name      = var.key_name
 
   subnet_id              = var.subnet_id
