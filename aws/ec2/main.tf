@@ -36,7 +36,7 @@ module "ec2_instance" {
 
   tags = merge(
     {
-      "Name" = var.instance_name
+      "Name" = var.name
     },
     var.instance_tags
   )
