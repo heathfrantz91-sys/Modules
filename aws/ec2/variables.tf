@@ -1,18 +1,7 @@
 variable "create" {
-  description = "Whether to create an instance"
+  description = "Whether to create an EC2 instance"
   type        = bool
   default     = true
-}
-
-variable "instance_tags" {
-  description = "Additional tags for the instance"
-  type        = map(string)
-  default     = {}
-}
-
-variable "instance_name" {
-  description = "Name of the EC2 instance"
-  type        = string
 }
 
 variable "instance_type" {
@@ -22,8 +11,12 @@ variable "instance_type" {
 }
 
 variable "ami_id" {
-  description = "AMI ID to use for the EC2 instance"
+  description = <<EOT
+(Optional) Specific AMI ID to use. 
+If not provided, the latest Ubuntu 20.04 LTS AMI will be selected automatically.
+EOT
   type        = string
+  default     = ""
 }
 
 variable "key_name" {
@@ -31,12 +24,14 @@ variable "key_name" {
   type        = string
 }
 
-variable "subnet_id" {
-  description = "Subnet ID where instance will be deployed"
-  type        = string
+variable "instance_tags" {
+  description = "Additional tags to apply to the instance"
+  type        = map(string)
+  default     = {}
 }
 
-variable "security_group_ids" {
-  description = "List of security group IDs"
-  type        = list(string)
+variable "environment" {
+  description = "Environment name (e.g. dev, qa, prod)"
+  type        = string
+  default     = "dev"
 }
