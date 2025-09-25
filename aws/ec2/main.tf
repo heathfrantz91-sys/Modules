@@ -26,7 +26,7 @@ module "ec2_instance" {
 
   count = var.create ? 1 : 0
 
-  name          = var.instance_name
+  name          = var.name
   instance_type = var.instance_type
   ami           = var.ami_id != "" ? var.ami_id : data.aws_ami.default_ubuntu[0].id
   key_name      = var.key_name
