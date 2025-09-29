@@ -51,3 +51,8 @@ variable "create" {
   type        = bool
   default     = true
 }
+
+variable "vpc_security_group_ids" {
+  description = "List of security group IDs"
+  type        = list(string)
+}
