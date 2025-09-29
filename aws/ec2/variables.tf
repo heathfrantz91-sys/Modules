@@ -50,3 +50,16 @@ variable "environment" {
   type        = string
   default     = "dev"
 }
+
+# ✅ NEW VARIABLES for CPU options
+variable "cpu_core_count" {
+  description = "Number of CPU cores for the instance (only supported on compatible instance types). Leave null to skip."
+  type        = number
+  default     = null
+}
+
+variable "cpu_threads_per_core" {
+  description = "Threads per core for the instance (only supported on compatible instance types). Leave null to skip."
+  type        = number
+  default     = null
+}
