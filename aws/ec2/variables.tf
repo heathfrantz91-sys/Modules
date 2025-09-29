@@ -7,7 +7,7 @@ variable "create" {
 variable "name" {
   description = "Name of the EC2 instance"
   type        = string
-  default     = "unkownec2instance"
+  default     = "unknownec2instance"
 }
 
 variable "instance_type" {
@@ -51,7 +51,7 @@ variable "environment" {
   default     = "dev"
 }
 
-# ✅ NEW VARIABLES for CPU options
+# ✅ CPU options (optional, used by official module)
 variable "cpu_core_count" {
   description = "Number of CPU cores for the instance (only supported on compatible instance types). Leave null to skip."
   type        = number
@@ -62,4 +62,18 @@ variable "cpu_threads_per_core" {
   description = "Threads per core for the instance (only supported on compatible instance types). Leave null to skip."
   type        = number
   default     = null
+}
+
+# ✅ Optional volume size
+variable "root_volume_size" {
+  description = "Root volume size in GB"
+  type        = number
+  default     = 8
+}
+
+# ✅ Optional volume type
+variable "root_volume_type" {
+  description = "Root volume type (e.g., gp2, gp3, io1)"
+  type        = string
+  default     = "gp3"
 }
