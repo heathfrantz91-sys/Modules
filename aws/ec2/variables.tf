@@ -57,3 +57,15 @@ variable "security_group_ids" {
   type        = list(string)
   default     = []
 }
+
+variable "vpc_security_group_ids" {
+  description = "Primary list of security group IDs"
+  type        = list(string)
+  default     = []
+}
+
+variable "security_group_ids" {
+  description = "Fallback list of security group IDs"
+  type        = list(string)
+  default     = []
+}
