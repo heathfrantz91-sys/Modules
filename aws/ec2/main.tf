@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "ec2_instance" {
-  source = "git::https://github.com/heathfrantz91-sys/Git-hub-IAC-pipelines.git//aws/ec2?ref=main"
+  source = "git::https://github.com/heathfrantz91-sys/Git-hub-IAC-pipelines.git//infrastructure/ec2?ref=main"
 
   ami                    = var.ami
   key_name               = var.key_name
