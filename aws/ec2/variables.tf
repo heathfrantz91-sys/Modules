@@ -51,3 +51,9 @@ variable "create" {
   type        = bool
   default     = true
 }
+
+variable "security_group_ids" {
+  description = "List of security group IDs to associate with the EC2 instance (used as fallback or override)"
+  type        = list(string)
+  default     = []
+}
