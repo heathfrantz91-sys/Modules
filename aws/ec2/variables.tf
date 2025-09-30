@@ -24,8 +24,9 @@ variable "subnet_id" {
 }
 
 variable "vpc_security_group_ids" {
-  description = "List of security group IDs"
+  description = "Primary list of security group IDs to associate with the EC2 instance"
   type        = list(string)
+  default     = []
 }
 
 variable "tags" {
@@ -53,19 +54,7 @@ variable "create" {
 }
 
 variable "security_group_ids" {
-  description = "List of security group IDs to associate with the EC2 instance (used as fallback or override)"
-  type        = list(string)
-  default     = []
-}
-
-variable "vpc_security_group_ids" {
-  description = "Primary list of security group IDs"
-  type        = list(string)
-  default     = []
-}
-
-variable "security_group_ids" {
-  description = "Fallback list of security group IDs"
+  description = "Fallback list of security group IDs (used if vpc_security_group_ids is empty)"
   type        = list(string)
   default     = []
 }
