@@ -14,7 +14,7 @@ provider "aws" {
   region = "us-east-1"
 }
 module "ec2_instance" {
-  source = "git::https://github.com/heathfrantz91-sys/Modules.git//aws/ec2?ref=main"
+  source = "git::https://github.com/heathfrantz91-sys/Git-hub-IAC-pipelines"
 
   ami                    =  var.ami
   key_name               = var.key_name
