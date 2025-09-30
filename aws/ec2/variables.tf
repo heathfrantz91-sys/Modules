@@ -1,36 +1,36 @@
 variable "name" {
-  description = "EC2 instance name"
-  type        = string
-}
-
-variable "instance_type" {
-  description = "EC2 instance type"
+  description = "EC2 instance name (used in tags)"
   type        = string
 }
 
 variable "ami" {
-  description = "AMI ID for EC2 instance"
+  description = "AMI ID for the EC2 instance"
+  type        = string
+}
+
+variable "instance_type" {
+  description = "EC2 instance type (e.g., t3.micro)"
   type        = string
 }
 
 variable "key_name" {
-  description = "SSH key name"
+  description = "SSH key name to access the EC2 instance"
   type        = string
 }
 
 variable "subnet_id" {
-  description = "Subnet ID where the instance will be launched"
+  description = "Subnet ID where the EC2 instance will be launched"
   type        = string
 }
 
 variable "vpc_security_group_ids" {
-  description = "Primary list of security group IDs to associate with the EC2 instance"
+  description = "List of VPC security group IDs to attach to the EC2 instance"
   type        = list(string)
   default     = []
 }
 
 variable "tags" {
-  description = "Map of tags to apply to the instance"
+  description = "Map of additional tags to apply to the EC2 instance"
   type        = map(string)
   default     = {}
 }
@@ -42,7 +42,7 @@ variable "cpu_core_count" {
 }
 
 variable "cpu_threads_per_core" {
-  description = "Threads per core (optional)"
+  description = "Number of threads per core (optional)"
   type        = number
   default     = null
 }
@@ -51,10 +51,4 @@ variable "create" {
   description = "Whether to create the EC2 instance"
   type        = bool
   default     = true
-}
-
-variable "security_group_ids" {
-  description = "Fallback list of security group IDs (used if vpc_security_group_ids is empty)"
-  type        = list(string)
-  default     = []
 }
