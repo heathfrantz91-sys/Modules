@@ -18,13 +18,13 @@ variable "acl" {
 }
 
 variable "object_ownership" {
-  description = "Object ownership type (e.g., ObjectWriter, BucketOwnerPreferred, BucketOwnerEnforced)"
+  description = "Object ownership setting (ObjectWriter, BucketOwnerPreferred, BucketOwnerEnforced)"
   type        = string
   default     = "ObjectWriter"
 }
 
 variable "tags" {
-  description = "Tags to apply to the S3 bucket"
+  description = "Map of tags to apply to the bucket"
   type        = map(string)
   default     = {}
 }
