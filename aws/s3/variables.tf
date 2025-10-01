@@ -4,7 +4,7 @@ variable "bucket" {
 }
 
 variable "versioning" {
-  description = "S3 bucket versioning block"
+  description = "S3 bucket versioning settings"
   type        = map(bool)
   default     = {
     enabled = false
@@ -17,14 +17,8 @@ variable "acl" {
   default     = "private"
 }
 
-variable "control_object_ownership" {
-  description = "Control ownership setting"
-  type        = bool
-  default     = true
-}
-
 variable "object_ownership" {
-  description = "Object ownership type"
+  description = "Object ownership type (e.g., ObjectWriter, BucketOwnerPreferred, BucketOwnerEnforced)"
   type        = string
   default     = "ObjectWriter"
 }
